@@ -28,11 +28,18 @@
 
 		 NOTE: `build.sh` is responsible for removing the "isDebug" flag when deploying to production. If you modify
 		 this flag at all, you will break the build! -->
-    <script data-dojo-config="async: 1, tlmSiblingOfDojo: 0, isDebug: 1" src="dojo/dojo.js"></script>
+    <script data-dojo-config="async: 1, tlmSiblingOfDojo: 0, isDebug: 1,parseOnLoad: true" src="dojo/dojo.js"></script>
 
     <!-- Load the loader configuration script. Note that this module ID is hard-coded in build.sh in order to provide
          an optimised build that loads as few as one script for the entire application. If you change the name or
          location of this module, you will need to update build.sh too. -->
     <script src="app/run.js"></script>
+<div data-dojo-type="dijit/layout/BorderContainer" style="width: 100%; height: 100%">
+     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">Top pane</div>
+     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading'">Leading pane</div>
+     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">Center pane</div>
+     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'trailing'">Trailing pane</div>
+     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'">Bottom pane</div>
+</div>
 </body>
 </html>

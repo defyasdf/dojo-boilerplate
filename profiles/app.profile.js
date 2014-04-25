@@ -34,11 +34,13 @@ var profile = {
 	// Uses Closure Compiler as the JavaScript minifier. This can also be set to "shrinksafe" to use ShrinkSafe,
 	// though ShrinkSafe is deprecated and not recommended.
 	// This option defaults to "" (no compression) if not provided.
-	optimize: 'closure',
+	// 如果要讲究更高的压缩的话：closure
+	optimize: 'shrinksafe',
 
 	// We're building layers, so we need to set the minifier to use for those, too.
 	// This defaults to "shrinksafe" if not provided.
-	layerOptimize: 'closure',
+	// 如果要讲究更高的压缩的话：closure
+	layerOptimize: 'shrinksafe',
 
 	// Strips all calls to console functions within the code. You can also set this to "warn" to strip everything
 	// but console.error, and any other truthy value to strip everything but console.warn and console.error.
@@ -63,7 +65,15 @@ var profile = {
 			// the main application `app/main` and the `dojo/i18n` and `dojo/domReady` modules because, while they are
 			// all conditional dependencies in `app/main`, we do not want to have to make extra HTTP requests for such
 			// tiny files.
-			include: [ 'dojo/i18n', 'dojo/domReady', 'app/main', 'app/run' ],
+			include: [ 
+			           'dojo/i18n', 
+			           "dojo/parser", 
+			           "dijit/layout/BorderContainer", 
+			           "dijit/layout/ContentPane", 
+			           'dojo/domReady', 
+			           'app/main', 
+			           'app/run'
+			         ],
 
 			// By default, the build system will try to include `dojo/main` in the built `dojo/dojo` layer, which adds
 			// a bunch of stuff we do not want or need. We want the initial script load to be as small and quick to
@@ -77,7 +87,7 @@ var profile = {
 		// to roll everything into a single layer, but this helps provide a basic illustration of multi-layer builds.)
 		// Note that when you create a new layer, the module referenced by the layer is always included in the layer
 		// (in this case, `app/Dialog`), so it does not need to be explicitly defined in the `include` array.
-		'app/Dialog': {}
+		'app/Layout': {}
 	},
 
 	// Providing hints to the build system allows code to be conditionally removed on a more granular level than
